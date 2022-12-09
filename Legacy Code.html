@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is the Strangler Fig Pattern and How it Helps Manage Legacy Code</title>
+  <link rel="stylesheet" href="css/all.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style="opacity: 0.8;">
+    <div class="container-fluid">
+      <img src="images/1 (2).jpg" alt="this is logo" class="navbar-brand rounded-circle " height="50" width="50">
+      <a href="index.html" class="navbar-brand text-light" style="border-left:1px solid #ccc; padding-left: 10px; font-weight: bold;" >Imagine</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Web development</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Learn to Code</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Python</a></li>
+              <li><a class="dropdown-item" href="#">Java</a></li>
+              <li><a class="dropdown-item" href="#">JavaScript</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <form class="d-flex justify-content-end mb-1">
+          <input class="form-control" type="search" placeholder="Search" >
+          <button class="btn btn-primary mx-1" type="button">Search</button>
+        </form>
+        <div class="justify-content-center user-log mb-1">
+          <button type="button" class="btn btn-success text-light mr-1" id="register"><a href="register.html" style="color:#FFF; text-decoration: none;">sign up</a></button>
+          <button type="button" class="btn btn-success text-light" id="sign"><a href="login.html" style="color:#FFF; text-decoration: none;">sign in</a></button>
+        </div>	
+        <div class="justify-content-center user-info mb-1">
+          <button type="button" class="btn btn-success text-light mr-1" id="user"><a href="index.html" style="color:#FFF; text-decoration: none;"></a></button>
+          <button type="button" class="btn btn-success text-light" id="logout"><a href="index.html" style="color:#FFF; text-decoration: none;">log out</a></button>
+        </div>
+      </div>
+</nav> <!-- end nav  <p class="text-secondary py-2"> </p> /////// -->
+<main class="p-5">
+    <div class="container">
+        <div class="contact ">
+            <h2>What is the Strangler Fig Pattern and How it Helps Manage Legacy Code</h2>
+            <a href="#course-details"class="btn btn-primary text-light" style =" text-decoration: none; ">View Course details </a>
+            <img src="images/Strangler.webp" class=" d-block w-75 py-3" alt="">
+        </div>
+        <div id="course-details" class="w-75" style="padding-top: 100px;">
+            <p class="text-secondary py-2"> Any sufficiently old codebase eventually starts to contain legacy code. Architecture, performance, comments, and more begin to degrade the moment after they are written    </p>
+            <p class="text-secondary py-2"> Some parts of the codebase last longer than other parts, but inevitably new coding standards emerge to reduce technical debt. Then you have to rework a large application, with zero downtime, making a “new way” of working without breaking anything in your release or development.</p>
+            <p class="text-secondary py-2"> The Strangler Fig Pattern is one effective way to solve this problem.</p>
+        </div>
+    </div>
+</main>
+<section class="contact py-5">
+    <div class="container">
+        <div class="w-75">
+            <h2 class="py-4">What is a Strangler Fig?</h2>
+            <p class="text-secondary py-2">The name Strangler Fig Pattern actually comes from a collection of plants that grow by “strangling” their hosts.</p>
+            <p class="text-secondary py-2">They grow in areas where competition for light is intense, and they have evolved to have their seeds dispersed (normally by birds) to the top of a host tree where they can get sunlight easily</p>
+            <p class="text-secondary py-2">Their roots grow down around the tree and the seedlings grow upwards to consume all the sunlight they can. This “strangles” the tree and the fig seedlings can often kill their host tree they landed on.</p>
+            <p class="text-secondary py-2">Here’s an image of a Strangler Fig, which I found on Wikipedia .</p>
+            <h2 class="py-4">So how does this apply to software? </h2>
+            <p class="text-secondary py-2">To completely re-write a large, complex codebase with lots of different interactions often with different teams results in a planning nightmare</p>
+            <p class="text-secondary py-2">In big complicated brown-field projects like this, going big-bang (where everything is released at once) generally forces you to:</p>
+            <ul class="text-secondary py-2">
+                <li>understand every interaction in depth to ensure you won’t break anything when you release</li>
+                <li>have all new bug fixes done both in the new and old codebase as you re-write it</li>
+                <li>keep both merged and up-to date</li>
+                <li>spend weeks in test</li>
+                <li>deal with tons of callouts and out of hours support for the new codebase’s rollout</li>
+            </ul>
+            <p class="text-secondary py-2">To top it all off, it normally ends with developers doing a lot of overtime along with an influx of bugs.</p>
+            <p class="text-secondary py-2">One big difficulty we are trying to remove when we use the Strangler Fig is making whoever is using your software aware of where your new software is now accessible.</p>
+            <p class="text-secondary py-2">When you are rewriting your backend, for example, if you put everything on a new endpoint and kindly ask your users to point to your new endpoint. But then if something goes wrong, you may have to ask them all to point back to the old one.</p>
+            <p class="text-secondary py-2">You may end up going back and forth between these two endpoints if you have really difficult bugs, which might frustrate your users.</p>
+            <p class="text-secondary py-2">When we use the Strangler Fig pattern we can avoid all the above.</p>
+            <h2 class="py-4">Why Strangle Our Code</h2>
+            <p class="text-secondary py-2">The Strangler Fig pattern aims to incrementally re-write small parts of your codebase, until after a few months/years, you have strangled all your old codebase and it can be totally removed.</p>
+            <p class="text-secondary py-2">The rough flow is: add a new part to your system that isn’t used yet, switch on the new part of the code – normally with a feature flag so it coexists with the old code – and finally remove the old code</p>
+            <h2 class="py-4">Benefits of the Strangler Fig pattern</h2>
+            <p class="text-secondary py-2">Aside from helping you avoid all the issues we’ve already discussed, it also:</p>
+            <ul class="text-secondary py-2">
+                <li>reduces your risk when you need to update things</li>
+                <li>starts to immediately give you some benefit piece by piece</li>
+                <li>allows you to push your changes in small modular pieces, easier for release</li>
+                <li>ensures zero down time</li>
+                <li>is generally more agile</li>
+                <li>makes your rollbacks easier</li>
+                <li>allows you to spread your development on the codebase over a longer period of time if you have multiple priorities</li>
+            </ul>
+            <p class="text-secondary py-2">There are multiple ways of implementing the Strangler Fig pattern and it depends on the system you’re removing, and so on. So let’s get concrete and cover an example.</p>
+            <h2 class="py-4">Façade Payment Provider Example</h2>
+            <p class="text-secondary py-2">Let’s say as an example you have a huge monolithic back-end codebase to handle payments. It is huge. A few million lines of code, with multiple endpoints, that you want to re-write into something new for your company, for a multitude of reasons.</p>
+            <p class="text-secondary py-2">Performance is now poor, the architecture is too confusing to onboard new developers, and there is lots of dead-code you need to remove but don’t want to break anything.</p>
+            <p class="text-secondary py-2">Breaking a huge codebase involving customer payments might just cause the unlucky developer who pushed up last to lose their job!</p>
+            <p class="text-secondary py-2">Okay. How do you slowly choke out this old codebase? Even more tricky, you don’t want to just put a new endpoint there and force everyone to move. You have hundreds of customers using this software, they can’t just flip back and forth between your endpoints if you have bugs and need to rollback</p>
+            <p class="text-secondary py-2">Just to add one last challenge, you don’t want to change your interfaces to these endpoints either. Everything being passed as arguments or returned should remain the same.</p>
+            <h2 class="py-4">The Strangler Fig Pattern-based Solution</h2>
+            <p class="text-secondary py-2">We can create a façade that intercepts requests going to the legacy endpoints.</p>
+            <p class="text-secondary py-2">The new façade will hand off to the new API you’ve written, or hand off to the legacy API if you haven’t rewritten that piece of the codebase yet</p>
+            <p class="text-secondary py-2">This façade is essentially a shim to catch network requests and hand them off to the right place.</p>
+            <p class="text-secondary py-2">You can then gradually migrate across to the new API piece by piece, and your users will be unaware of any changes to your underlying code as you have correctly abstracted it away</p>
+            <p class="text-secondary py-2">If you are doing this correctly you will generally:</p>
+            <ul class="text-secondary py-2">
+                <li>Just have the legacy way at the beginning</li>
+                <li>Make the new API</li>
+                <li>Make it coexist with the legacy API, where you can turn it on and off with feature flags</li>
+                <li>Move more and more across to the new API</li>
+                <li>Delete the old way when fully migrated</li>
+            </ul>
+            <p class="text-secondary py-2">The strangling part is happening piece by piece where you remove more and more responsibility from the legacy API and into the new API.</p>
+            <h2 class="py-4">Conclusion</h2>
+            <p class="text-secondary py-2">I hope this has explained what the Strangler Fig Pattern is along with some of its benefits.</p>
+            <p class="text-secondary py-2">I have seen this pattern used in real software projects and it works really effectively. It was easily one of the most complicated projects I worked on and the Strangler Fig made it so much easier.</p>
+            <p class="text-secondary py-2">It stops you from writing software projects for months, and then crossing your fingers and sending it to production whilst hoping you haven’t forgotten anything</p>
+            <p class="text-secondary py-2">There were two invaluable resources that were very useful when I was writing this:</p>
+    
+        </div>
+    </div>
+</section>
+
+
+  <!-- ///////////////////////////////////footer/////////////////////// -->
+<footer class="footer p-5 text-light bg-dark">
+    <div class="container">
+      <div class="footer-content row justify-content-between">
+        <div class="nav-details col-lg-6 col-sm-12">
+          <h2><a href="#" class="nav-item1 nav-details-title">Imagine</a></h2>
+          <p>Develop yourself in the digital era for a brighter tomorrow. Our community is here to help along the way.</p>
+        </div>
+        <div class="nav-about col-lg-3 col-sm-6">
+          <ul class="nav flex-column about-list">
+            <li class="nav-item text-bold ml-2 p-2"> <h4>About</h4></li>      
+            <li class="nav-item1"><a class="nav-link" href="#">Our mission</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Our story</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Become a member</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Contact us</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class=" nav-about col-lg-3 col-sm-6">
+          <ul class="nav flex-column learn-list">
+            <li class="nav-item ml-2 p-2"><h4>Learn</h4></li> 
+            <li class="nav-item1"><a class="nav-link" href="#">Learn to Code</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Web development</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Web optimizations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="bg-light">
+    <div class="container text-light"><p> &copy; 2022 Imagine Development Association , All Rights Reserved</p> </div>
+</footer>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

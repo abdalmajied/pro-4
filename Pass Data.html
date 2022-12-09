@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Pass Data and Events Between Components in React</title>
+  <link rel="stylesheet" href="css/all.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style="opacity: 0.8;">
+    <div class="container-fluid">
+      <img src="images/1 (2).jpg" alt="this is logo" class="navbar-brand rounded-circle " height="50" width="50">
+      <a href="index.html" class="navbar-brand text-light" style="border-left:1px solid #ccc; padding-left: 10px; font-weight: bold;" >Imagine</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Web development</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Learn to Code</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Python</a></li>
+              <li><a class="dropdown-item" href="#">Java</a></li>
+              <li><a class="dropdown-item" href="#">JavaScript</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <form class="d-flex justify-content-end mb-1">
+          <input class="form-control" type="search" placeholder="Search" >
+          <button class="btn btn-primary mx-1" type="button">Search</button>
+        </form>
+        <div class="justify-content-center user-log mb-1">
+          <button type="button" class="btn btn-success text-light mr-1" id="register"><a href="register.html" style="color:#FFF; text-decoration: none;">sign up</a></button>
+          <button type="button" class="btn btn-success text-light" id="sign"><a href="login.html" style="color:#FFF; text-decoration: none;">sign in</a></button>
+        </div>	
+        <div class="justify-content-center user-info mb-1">
+          <button type="button" class="btn btn-success text-light mr-1" id="user"><a href="index.html" style="color:#FFF; text-decoration: none;"></a></button>
+          <button type="button" class="btn btn-success text-light" id="logout"><a href="index.html" style="color:#FFF; text-decoration: none;">log out</a></button>
+        </div>
+      </div>
+</nav> <!-- end nav  <p class="text-secondary py-2"> </p> /////// -->
+<main class="p-5">
+    <div class="container">
+        <div class="contact ">
+            <h2>How to Pass Data and Events Between Components in React            </h2>
+            <a href="#course-details"class="btn btn-primary text-light" style =" text-decoration: none; ">View Course details </a>
+            <img src="images/react2.webp" class=" d-block w-75 py-3" alt="">
+        </div>
+        <div id="course-details" class="w-75" style="padding-top: 100px;">
+            <p class="text-secondary py-2">If you’re trying to implement CRUD operations using API endpoints, you might find that it’s hard to manage data across multiple components.</p>
+            <p class="text-secondary py-2"> Or maybe you have a modal, but you want to trigger it from a different component.</p>
+            <p class="text-secondary py-2"> Wrapping your head around how to tackle these scenarios can be difficult.</p>
+            <p class="text-secondary py-2">In this tutorial, I’ll be showing you how you can do it.</p>
+        </div>
+    </div>
+</main>
+<section class="contact py-5">
+    <div class="container">
+        <div class="w-75">
+            <h2 class="py-4">How to Pass Data Between a Parent Component and a Child Component            </h2>
+            <p class="text-secondary py-2"> Firstly, let’s pass data between a parent component and a child component. .</p>
+            <p class="text-secondary py-2"> First, you’ll need to create two components, one parent and one child.</p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+    import React from 'react' 
+    export default function Parent() {
+    return (
+        &lt;div&gt;
+        
+        &lt;/div&gt;
+    )
+    }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary py-2">Parent.js            </p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+    import React from 'react' 
+    export default function Child() {
+    return (
+        &lt;div&gt;
+        
+        &lt;/div&gt;
+    )
+    }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary pt-2">Chaild.js            </p>
+            <p class="text-secondary pb-2">   Next, you’ll import the child component in the parent component and return it.  </p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+     import React from 'react'
+    import Child from './Child';
+
+    export default function Parent() {
+    return (
+        &lt;div&gt;
+        &lt;Child/&gt;
+        &lt;/div&gt;
+    )
+    }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary pt-2">Call the Child Component in the Parent Component </p>
+            <p class="text-secondary pt-2">Then you’ll create a function and a button to trigger that function. Also, you’ll create a state using the useState Hook to manage the data.            </p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+    import React from 'react'
+    import Child from './Child';
+    import { Button } from 'semantic-ui-react';
+    import { useState } from 'react';
+    import './App.css';
+
+    export default function Parent() {
+    const [data, setData] = useState('');
+    
+    const parentToChild = () => {
+        setData("This is data from Parent Component to the Child Component.");
+    }
+    return (
+        &lt;div className="App">
+        &lt;Child/>
+        
+        &lt;div>
+            &lt;Button primary onClick={() => parentToChild()}>Click Parent&lt;/Button>
+        &lt;/div>
+        &lt;/div>
+    )
+    }
+                     </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary pt-2">As you can see here, we are calling the parentToChild function on the Click Parent button click. When the Click Parent button is clicked, it will store the “This is data from Parent Component to the Child Component” in the data variable.     </p>
+            <p class="text-secondary pt-2">Now, let’s pass that data state to our child components. You can do this using props. </p>
+            <p class="text-secondary pt-2">Pass the data as props when you are calling the child component like this: </p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+    &lt;Child parentToChild={data}/>
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary pt-2">Parent.js</p>
+            <p class="text-secondary pb-2">Here, we are passing the data in the child component as data.         </p>
+            <p class="text-secondary"><span class="border p-1"> data</span>  is the data which we have to pass, and <span class="border p-1">parentToChild</span> is the name of the prop.</p>
+            <p class="text-secondary py-2">Next, it’s time to capture the data in the child component. And it’s very simple. </p>
+            <p class="text-secondary py-2">Here, there can be two cases.</p>
+            <p class="text-secondary py-2">Case 1: If you are using a functional component, simply catch the parentToChild in the parameters.</p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+     import React from 'react'
+
+     export default function Child({parentToChild}) {
+     return (
+         &lt;div>
+            {parentToChild}
+        &lt;/div>
+        )
+    }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary py-2">React Functional Component</p>
+            <p class="text-secondary py-2">Case 2: If you have a class component, then just use <span class="border p-1">this.props.parentToChild</span></p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+        import React, { Component } from 'react'
+
+         export default class Child extends Component {
+        render() {
+            return (
+                &lt;div>
+                    {this.props.parentToChild}
+                &lt;/div>
+            )
+        }
+    }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary py-2">React Class Component</p>
+            <p class="text-secondary py-2">Either way, you will get the same results:</p>
+            <p class="text-secondary py-2">When we click the<span class="border p-1">Click Parent </span> button, we will see the data as output on the screen.</p>
+            <div class="code py-2" style="border: solid 1px rgb(231, 231, 231) ; ">
+                <pre>
+                    <code>
+        import React from 'react'
+        import Child from './Child';
+        import { Button } from 'semantic-ui-react';
+        import { useState } from 'react';
+        import './App.css';
+
+        export default function Parent() {
+        const [data, setData] = useState('');
+        
+        const parentToChild = () => {
+            setData("This is data from Parent Component to the Child Component.");
+        }
+        return (
+            &lt;div className="App">
+            &lt;Child parentToChild={data}/>
+            
+            &lt;div className="child">
+                &lt;Button primary onClick={() => parentToChild()}>Click Parent&lt;/Button>
+            &lt;/div>
+            &lt;/div>
+        )
+        }
+                    </code>
+                </pre>
+            </div> <!-- code -->
+            <p class="text-secondary py-2">Above you’ll see the full code for Parent Component.</p>
+        </div>
+    </div>
+</section>
+
+
+  <!-- ///////////////////////////////////footer/////////////////////// -->
+<footer class="footer p-5 text-light bg-dark">
+    <div class="container">
+      <div class="footer-content row justify-content-between">
+        <div class="nav-details col-lg-6 col-sm-12">
+          <h2><a href="#" class="nav-item1 nav-details-title">Imagine</a></h2>
+          <p>Develop yourself in the digital era for a brighter tomorrow. Our community is here to help along the way.</p>
+        </div>
+        <div class="nav-about col-lg-3 col-sm-6">
+          <ul class="nav flex-column about-list">
+            <li class="nav-item text-bold ml-2 p-2"> <h4>About</h4></li>      
+            <li class="nav-item1"><a class="nav-link" href="#">Our mission</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Our story</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Become a member</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Contact us</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class=" nav-about col-lg-3 col-sm-6">
+          <ul class="nav flex-column learn-list">
+            <li class="nav-item ml-2 p-2"><h4>Learn</h4></li> 
+            <li class="nav-item1"><a class="nav-link" href="#">Learn to Code</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Web development</a></li>
+            <li class="nav-item1"><a class="nav-link" href="#">Web optimizations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="bg-light">
+    <div class="container text-light"><p> &copy; 2022 Imagine Development Association , All Rights Reserved</p> </div>
+</footer>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

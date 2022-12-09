@@ -1,0 +1,71 @@
+.main-img{
+    width: 500px;
+}
+.main-info{
+    width: 400px;
+}
+.icon-box{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.icon-sign{
+    display: block;
+    line-height: 50px;
+    font-size: 25px;
+}
+.box-content{
+    width: 250px;
+}
+.elementor-post__card {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 7px 7px 21px gray;
+    transition: .5s;
+}
+.elementor-post__card:hover {
+    transform: scale(1.05);
+    box-shadow: 12px 12px 25px gray;
+}
+.elementor-post__badge{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    background-color: gray;
+    color: #ddd;
+    border-radius: 50px;
+    padding: 0px 10px ;
+}
+.elementor-post__title{
+    color: #000;
+}
+.elementor-post__title:hover{
+    text-decoration: none;
+}
+.elementor-post__read-more:hover{
+    text-decoration: none;
+}
+.nav-about a {
+    color: white;
+}
+.nav-item1 :hover {
+    color: rgb(74, 128, 243);
+}
+.nav-details-title{
+    color: white;
+}
+.nav-details-title :hover{
+    color: rgb(74, 128, 243);
+    text-decoration: none;
+} 
+
+   /* @media screen and (max-width: 1084px) {
+    #btnList {
+        display: flex;
+    }
+    .mynavbarr {
+        display: none;
+    }
+   } */
+
